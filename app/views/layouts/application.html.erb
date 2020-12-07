@@ -16,7 +16,7 @@
       <ul class="navbar-nav flex-row align-items-center">
         <li class="nav-item ml-3">
           <h1 class="text-uppercase p-2 bg-dark rounded text-white font-weight-bold">
-            <a class="text-white" href="/">dev</a>
+            <a class="text-white" href="/">GBONHI</a>
           </h1>
         </li>
       </ul>
@@ -25,6 +25,7 @@
         <li class="nav-item">
           <%= link_to "Create Event", new_user_path, class: "p-2 bg-oschool text-white rounded nav-link" %>
         </li>
+        <% if current_user %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
             dave
@@ -33,6 +34,14 @@
             Dashboard
           </div>
         </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to "Sign Up", new_user_path, class: "nav-link text-dark" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign In", "/login", class: "nav-link text-dark" %>
+        </li>
+        <% end %>
       </ul>
     </nav>
   </header>
