@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
   resources :events, only: [:new, :create, :show, :index]
   get '/attend/:id' => 'users#attend_events'
-  get '/login' => 'sessions#new'
+  get '/login' => '
+  #new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 end
