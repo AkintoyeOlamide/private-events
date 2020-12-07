@@ -21,10 +21,8 @@
               </p>
             </div>
             <div class="mt-3">
-              <a href="#" class="w-25 p-2 text-center bg-white rounded nav-link blue-oschool">
-              <%= link_to "attend this event",  '/attend', id: @event.id %>
-              </a>
-            </div>
+              <%= link_to "attend this event", attend_path(@event), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
+           </div>
           </div>
         </div>
       </div>

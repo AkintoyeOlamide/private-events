@@ -18,9 +18,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def attend_event
+  def attend_events
     @event = Event.find(params[:id])
-    current_user.attendances(concerned_event: @event)
+    current_user.attendances.create(concerned_event: @event)
     flash.notice = 'Event Attended!'
     redirect_to "/"
   end
