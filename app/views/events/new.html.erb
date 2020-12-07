@@ -25,6 +25,24 @@
             </div>
             <%= f.text_field :location, placeholder: "eg. Abidjan", class: 'form-control' %><br>
           </div>
+          <strong><%= f.label :date, "Date" %></strong><br />
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                @
+              </div>
+            </div>
+            <%= f.date_field :date, class: 'form-control' %><br>
+          </div>
+          <strong><%= f.label :description, "Description" %></strong><br />
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                @
+              </div>
+            </div>
+            <%= f.text_area :description, class: 'form-control' %><br>
+          </div>
         </div>
         <%= f.submit 'Create', {:class => 'w-100 text-center text-uppercase bg-oschool p-3 text-white'} %>
     <% end %>
