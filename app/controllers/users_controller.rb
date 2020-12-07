@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authorize, only: [:attend_events]
   def new
     @user = User.new
   end
@@ -17,9 +18,17 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def attend_events
+    @event = Event.find(params[:id])
+    current_user.attendances.create(concerned_event: @event)
+    flash.notice = 'Event Attended!'
+    redirect_to "/"
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:username)
   end
 end
+

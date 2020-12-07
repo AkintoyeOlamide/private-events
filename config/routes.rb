@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   root to: 'events#index'
   resources :users, only: [:new, :create, :show]
   resources :events, only: [:new, :create, :show, :index]
-  get '/attend/:id' => 'users#attend_events'
-  get '/login' => '
-  #new'
+  get '/attend/:id' => 'users#attend_events', as: :attend
+  get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 end

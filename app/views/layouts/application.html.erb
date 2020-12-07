@@ -28,10 +28,11 @@
         <% if current_user %>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            dave
+            <%= current_user.username %>
           </a>
           <div class="dropdown-menu">
-            Dashboard
+            <%= link_to "Dashboard", user_path(current_user), class: "nav-link text-dark" %>
+            <%= link_to "Logout", "/logout", class: "nav-link text-dark"%>
           </div>
         </li>
         <% else %>

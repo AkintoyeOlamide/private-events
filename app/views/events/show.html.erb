@@ -21,10 +21,12 @@
               </p>
             </div>
             <div class="mt-3">
-              <a href="#" class="w-25 p-2 text-center bg-white rounded nav-link blue-oschool">
-                Attend this event
-              </a>
-            </div>
+              <% if current_user.concerned_events.exists?(@event.id) %>
+              <p class="w-25 p-2 text-center bg-white rounded border text-success border-success"> You are already an attendee</p>
+              <% else %>
+              <%= link_to "Attend this event", attend_path(@event), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
+              <% end %>
+           </div>
           </div>
         </div>
       </div>
@@ -46,9 +48,11 @@
         </p>
       </div>
       <div class="col-4">
-        <a href="#" class="p-2 text-center bg-white rounded nav-link blue-oschool">
-          Attend this event
-        </a>
+        <% if current_user.concerned_events.exists?(@event.id) %>
+        <p class="p-2 text-center bg-white rounded border text-success border-success"> You are already an attendee</p>
+        <% else %>
+        <%= link_to "Attend this event", attend_path(@event), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
+        <% end %>
       </div>
     </div>
     <div class="row">
