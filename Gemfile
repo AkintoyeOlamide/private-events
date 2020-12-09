@@ -38,6 +38,16 @@ group :development do
   gem 'web-console', '>= 3.3.0'
 end
 
+group :development, :test do
+  gem "database_cleaner"
+  gem "rspec-rails"
+end
+
+group :test do
+  gem "capybara", '>= 2.15'
+  gem "selenium-webdriver"
+end
+
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'

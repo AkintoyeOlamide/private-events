@@ -6,7 +6,7 @@
       <div class="col-md-12 main-content pt-5">
         <div class="row">
           <div class="col-4">
-            <img class="img-fluid" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F99222656%2F321310090885%2F2%2Foriginal.jpg?w=225&auto=format%2Ccompress&q=75&sharp=10&s=7138bb23a63c88ffb8a3837f4b7a58ed" alt="">
+            <img class="img-fluid" src="https://process.filestackapi.com/AtM7HNKzQZ6u2HxwJF1Jiz/compress/quality=value:90/0tTy4z3lTbCkw18ehjQ8" alt="">
           </div>
           <div class="col-md-8">
             <div class="date">
@@ -21,7 +21,7 @@
               </p>
             </div>
             <div class="mt-3">
-              <% if current_user.concerned_events.exists?(@event.id) %>
+              <% if current_user && current_user.concerned_events.exists?(@event.id) %>
               <p class="w-25 p-2 text-center bg-white rounded border text-success border-success"> You are already an attendee</p>
               <% else %>
               <%= link_to "Attend this event", attend_path(@event), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
@@ -48,13 +48,14 @@
         </p>
       </div>
       <div class="col-4">
-        <% if current_user.concerned_events.exists?(@event.id) %>
+        <% if current_user && current_user.concerned_events.exists?(@event.id) %>
         <p class="p-2 text-center bg-white rounded border text-success border-success"> You are already an attendee</p>
         <% else %>
         <%= link_to "Attend this event", attend_path(@event), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
         <% end %>
       </div>
     </div>
+    <% if current_user %>
     <div class="row">
       <div class="col-8">
         <h6 class="font-weight-bold">List of attendees</h6>
@@ -69,5 +70,6 @@
       </div>
 
     </div>
+    <% end %>
   </div>
 </main>
