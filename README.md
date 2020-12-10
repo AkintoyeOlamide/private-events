@@ -13,7 +13,7 @@ A user can create events. A user can attend many events. An event can be attende
 
 ## 🚀 Our Project
 
-Our project can be found at https://github.com/AkintoyeOlamide/members-only
+Our project can be found at https://github.com/daviidy/private-events
 
 ## Live Demo
 
