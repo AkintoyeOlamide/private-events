@@ -22,6 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @attendances = Attendance.where("status = ?", true)
   end
 
   def attend_events

@@ -70,8 +70,8 @@
 
         <p class="mt-5">
           <ul>
-            <% @event.invited_users.each do |user| %>
-            <li> <%= link_to user.username, user_path(user) %> </li>
+            <% @attendances.each do |attendance| %>
+            <li> <%= link_to attendance.invited_user.username, user_path(attendance.invited_user) %> </li>
             <% end %>
           </ul>
         </p>

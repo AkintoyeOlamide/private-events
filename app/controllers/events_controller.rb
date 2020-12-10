@@ -26,6 +26,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @attendances = Attendance.where("status = ?", true).where("concerned_event_id = ?", @event.id)
   end
 
   private
