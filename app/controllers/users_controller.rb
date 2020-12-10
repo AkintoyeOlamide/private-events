@@ -1,11 +1,5 @@
 class UsersController < ApplicationController
   before_action :authorize, only: [:attend_events]
-
-  def index
-    @users = User.where("id != ?", current_user.id).order('username ASC')
-    @event = Event.find(params[:event_id])
-  end
-
   def new
     @user = User.new
   end
@@ -25,36 +19,10 @@ class UsersController < ApplicationController
   end
 
   def attend_events
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:event_id])
-    @attendance = @user.attendances.where("concerned_event_id = ?", @event.id).first.status = true
-    @attendance.save
-    flash.notice = 'Invitation Accepted!'
+    @event = Event.find(params[:id])
+    current_user.attendances.create(concerned_event: @event)
+    flash.notice = 'Event Attended!'
     redirect_to "/"
-  end
-
-  def withdraw_events
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:event_id])
-    @user.concerned_events.delete(@event)
-    flash.notice = 'Event Cancelled!'
-    redirect_to "/"
-  end
-
-  def inviteUser
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:event_id])
-    @user.attendances.create(concerned_event: @event)
-    flash.notice = "Invitation sent to #{@user.username} !"
-    redirect_to "/inviteUsers/#{@event.id}"
-  end
-
-  def cancelInviteUser
-    @user = User.find(params[:user_id])
-    @event = Event.find(params[:event_id])
-    @user.concerned_events.delete(@event)
-    flash.notice = "Invitation cancelled for #{@user.username} !"
-    redirect_to "/inviteUsers/#{@event.id}"
   end
 
   private
@@ -63,3 +31,4 @@ class UsersController < ApplicationController
     params.require(:user).permit(:username)
   end
 end
+

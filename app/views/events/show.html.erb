@@ -21,14 +21,10 @@
               </p>
             </div>
             <div class="mt-3">
-              <% if current_user && current_user.created_events.exists?(@event.id) %>
-              <%= link_to "Invite people", inviteUsers_path(@event), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
-              <% elsif current_user && current_user.concerned_events.exists?(@event.id) %>
-              <%= link_to "Withdraw", attend_path(user_id: current_user.id, event_id: @event.id), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
-              <% elsif current_user && current_user.related_events.exists?(@event.id) %>
-              <%= link_to "You have been invited. Attend the event", attend_path(user_id: current_user.id, event_id: @event.id), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
+              <% if current_user && current_user.concerned_events.exists?(@event.id) %>
+              <p class="w-25 p-2 text-center bg-white rounded border text-success border-success"> You are already an attendee</p>
               <% else %>
-              <p>You must be invited to attend this event</p>
+              <%= link_to "Attend this event", attend_path(@event), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
               <% end %>
            </div>
           </div>
@@ -52,14 +48,10 @@
         </p>
       </div>
       <div class="col-4">
-        <% if current_user && current_user.created_events.exists?(@event.id) %>
-        <%= link_to "Invite people", inviteUsers_path(@event), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
-        <% elsif current_user && current_user.concerned_events.exists?(@event.id) %>
-        <%= link_to "Withdraw", attend_path(user_id: current_user.id, event_id: @event.id), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
-        <% elsif current_user && current_user.related_events.exists?(@event.id) %>
-        <%= link_to "You have been invited. Attend the event", attend_path(user_id: current_user.id, event_id: @event.id), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
+        <% if current_user && current_user.concerned_events.exists?(@event.id) %>
+        <p class="p-2 text-center bg-white rounded border text-success border-success"> You are already an attendee</p>
         <% else %>
-        <p>You must be invited to attend this event</p>
+        <%= link_to "Attend this event", attend_path(@event), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
         <% end %>
       </div>
     </div>
