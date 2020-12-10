@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:attend_events]
+  before_action :authorize, only: [:attend_events, :withdraw_events, :inviteUser, :cancelInviteUser]
 
   def index
     @users = User.where("id != ?", current_user.id).order('username ASC')
