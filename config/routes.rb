@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   get '/attend/:user_id/:event_id' => 'users#attend_events', as: :attend
   get '/withdraw/:user_id/:event_id' => 'users#withdraw_events', as: :withdraw
   get '/inviteUsers/:event_id' => 'users#index', as: :inviteUsers
-  get '/invite/:user_id/:event_id' => 'users#inviteUser', as: :invite
-  get '/cancel/:user_id/:event_id' => 'users#cancelInviteUser', as: :cancel
+  get '/invite/:user_id/:event_id' => 'users#invite_user', as: :invite
+  get '/cancel/:user_id/:event_id' => 'users#cancel_invite_user', as: :cancel
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'

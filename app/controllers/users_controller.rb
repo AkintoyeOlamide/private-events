@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: %i[attend_events withdraw_events inviteUser cancelInviteUser]
+  before_action :authorize, only: %i[attend_events withdraw_events invite_user cancel_invite_user]
 
   def index
     @users = User.where('id != ?', current_user.id).order('username ASC')
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
     redirect_to '/'
   end
 
-  def inviteUser
+  def invite_user
     @user = User.find(params[:user_id])
     @event = Event.find(params[:event_id])
     @user.attendances.create(concerned_event: @event)
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     redirect_to "/inviteUsers/#{@event.id}"
   end
 
-  def cancelInviteUser
+  def cancel_invite_user
     @user = User.find(params[:user_id])
     @event = Event.find(params[:event_id])
     @user.concerned_events.delete(@event)
