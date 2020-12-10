@@ -17,7 +17,7 @@ Our project can be found at https://github.com/AkintoyeOlamide/members-only
 
 ## Live Demo
 
-You can find the demo [here](https://damp-gorge-07639.herokuapp.com/)
+You can find the demo [here](https://mysterious-thicket-97365.herokuapp.com/)
 
 ## Gems used
 
