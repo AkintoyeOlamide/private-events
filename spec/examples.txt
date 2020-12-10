@@ -11,7 +11,7 @@ example_id                                     | status | run_time        |
 ./spec/event_spec.rb[1:2:1]                    | passed | 0.00619 seconds |
 ./spec/event_spec.rb[1:2:2]                    | passed | 0.00976 seconds |
 ./spec/event_spec.rb[1:2:3]                    | passed | 0.01367 seconds |
-./spec/features/authenticate_user_spec.rb[1:1] | passed | 18.55 seconds   |
+./spec/features/authenticate_user_spec.rb[1:1] | passed | 16.2 seconds    |
 ./spec/features/create_event_spec.rb[1:1]      | passed | 18.2 seconds    |
 ./spec/user_spec.rb[1:1:1]                     | passed | 0.00587 seconds |
 ./spec/user_spec.rb[1:2:1]                     | passed | 0.01484 seconds |
