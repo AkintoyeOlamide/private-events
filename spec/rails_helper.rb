@@ -49,13 +49,13 @@ RSpec.configure do |config|
 
 # This block must be here, do not combine with the other `before(:each)` block.
 # This makes it so Capybara can see the database.
-config.before(:each) do
-  DatabaseCleaner.start
-end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
 
-config.after(:each) do
-  DatabaseCleaner.clean
-end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -85,3 +85,12 @@ end
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
+Capybara.default_driver = :selenium_chrome

@@ -30,14 +30,6 @@ ActiveRecord::Schema.define(version: 2020_12_10_095221) do
     t.integer "creator_id"
   end
 
-  create_table "invitations", force: :cascade do |t|
-    t.integer "related_event_id"
-    t.integer "related_user_id"
-    t.boolean "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.datetime "created_at", precision: 6, null: false
