@@ -8,6 +8,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def invited?(user, event)
+    user.concerned_events.exists?(event)
+  end
+  helper_method :invited?
+
+  def attended?(user, event)
+    user.attendances.where("concerned_event_id = ?", event).first.status
+  end
+  helper_method :attended?
+
   def authorize
     redirect_to '/login' unless current_user
   end

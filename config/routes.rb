@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   root to: 'events#index'
   resources :users, only: [:new, :create, :show]
   resources :events, only: [:new, :create, :show, :index]
-  get '/attend/:id' => 'users#attend_events', as: :attend
+  get '/attend/:user_id/:event_id' => 'users#attend_events', as: :attend
+  get '/withdraw/:user_id/:event_id' => 'users#withdraw_events', as: :withdraw
+  get '/inviteUsers/:event_id' => 'users#index', as: :inviteUsers
+  get '/invite/:user_id/:event_id' => 'users#inviteUser', as: :invite
+  get '/cancel/:user_id/:event_id' => 'users#cancelInviteUser', as: :cancel
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
