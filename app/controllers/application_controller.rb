@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   helper_method :invited?
 
   def attended?(user, event)
-    user.attendances.where("concerned_event_id = ?", event).first.status
+    user.attendances.where('concerned_event_id = ?', event).first.status
   end
   helper_method :attended?
 

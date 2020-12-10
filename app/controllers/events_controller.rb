@@ -1,12 +1,12 @@
 class EventsController < ApplicationController
-  before_action :authorize, except: [:index, :show]
+  before_action :authorize, except: %i[index show]
 
   def index
     # @events = Event.all.order('created_at DESC')
     # @past = Event.past.order("date DESC")
     # @upcoming = Event.upcoming.order("date DESC")
-    @past = Event.past.order("date DESC")
-    @upcoming = Event.upcoming.order("date DESC")
+    @past = Event.past.order('date DESC')
+    @upcoming = Event.upcoming.order('date DESC')
   end
 
   def new
@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @attendances = Attendance.where("status = ?", true).where("concerned_event_id = ?", @event.id)
+    @attendances = Attendance.where('status = ?', true).where('concerned_event_id = ?', @event.id)
   end
 
   private

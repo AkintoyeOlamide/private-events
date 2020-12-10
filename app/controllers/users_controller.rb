@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
-  before_action :authorize, only: [:attend_events, :withdraw_events, :inviteUser, :cancelInviteUser]
+  before_action :authorize, only: %i[attend_events withdraw_events inviteUser cancelInviteUser]
 
   def index
-    @users = User.where("id != ?", current_user.id).order('username ASC')
+    @users = User.where('id != ?', current_user.id).order('username ASC')
     @event = Event.find(params[:event_id])
   end
 
@@ -22,27 +22,27 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @attendances = Attendance.where("status = ?", true)
+    @attendances = Attendance.where('status = ?', true)
   end
 
   def attend_events
     @user = User.find(params[:user_id])
     @event = Event.find(params[:event_id])
-    @attendance = @user.attendances.where("concerned_event_id = ?", @event.id).first
+    @attendance = @user.attendances.where('concerned_event_id = ?', @event.id).first
     @attendance.status = true
     @attendance.save
     flash.notice = 'Invitation Accepted!'
-    redirect_to "/"
+    redirect_to '/'
   end
 
   def withdraw_events
     @user = User.find(params[:user_id])
     @event = Event.find(params[:event_id])
-    @attendance = @user.attendances.where("concerned_event_id = ?", @event.id).first
+    @attendance = @user.attendances.where('concerned_event_id = ?', @event.id).first
     @attendance.status = false
     @attendance.save
     flash.notice = 'Event Cancelled!'
-    redirect_to "/"
+    redirect_to '/'
   end
 
   def inviteUser

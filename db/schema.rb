@@ -10,30 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_095221) do
-
-  create_table "attendances", force: :cascade do |t|
-    t.integer "concerned_event_id"
-    t.integer "invited_user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.boolean "status"
+ActiveRecord::Schema.define(version: 20_201_210_095_221) do
+  create_table 'attendances', force: :cascade do |t|
+    t.integer 'concerned_event_id'
+    t.integer 'invited_user_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.boolean 'status'
   end
 
-  create_table "events", force: :cascade do |t|
-    t.string "location"
-    t.text "description"
-    t.string "title"
-    t.date "date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "creator_id"
+  create_table 'events', force: :cascade do |t|
+    t.string 'location'
+    t.text 'description'
+    t.string 'title'
+    t.date 'date'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.integer 'creator_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'username'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
-
 end

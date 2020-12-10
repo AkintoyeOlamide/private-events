@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Creating an event', type: :feature do
   let!(:user) { User.create(username: 'test') }
 
-  scenario 'create with valid attributes', :js => true do
+  scenario 'create with valid attributes', js: true do
     visit '/login'
     fill_in 'username', with: 'test'
     click_button('Sign In')
