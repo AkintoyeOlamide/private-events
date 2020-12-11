@@ -22,8 +22,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @past = Event.past.select { |e| e.attendances.where('status = ?', true).where('invited_user_id = ?', @user.id) }
-    @upcoming = Event.upcoming.select { |e| e.attendances.where('status = ?', true).where('invited_user_id = ?', @user.id) }
+    @past = Event.past.select {
+      |e| e.attendances.where('status = ?', true).where('invited_user_id = ?', @user.id)
+    }
+    @upcoming = Event.upcoming.select {
+      |e| e.attendances.where('status = ?', true).where('invited_user_id = ?', @user.id)
+    }
   end
 
   def attend_events
