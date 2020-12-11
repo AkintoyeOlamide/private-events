@@ -2,9 +2,6 @@ class EventsController < ApplicationController
   before_action :authorize, except: %i[index show]
 
   def index
-    # @events = Event.all.order('created_at DESC')
-    # @past = Event.past.order("date DESC")
-    # @upcoming = Event.upcoming.order("date DESC")
     @past = Event.past.order('date DESC')
     @upcoming = Event.upcoming.order('date DESC')
   end

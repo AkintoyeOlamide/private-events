@@ -26,46 +26,42 @@
       </nav>
       <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-            <% @attendances.each do |attendance| %>
-              <% if attendance.concerned_event.date < Date.today %>
+            <% @past.each do |event| %>
               <div class="row mt-4 event p-4">
                 <div class="col-md-4">
                   <img class="img-fluid" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F116837057%2F321310090885%2F1%2Foriginal.20201105-075340?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=50a847fbce8bbdfabb88e2e9c1b7c3fa" alt="">
                 </div>
                 <div class="col-md-8">
                   <div class="date">
-                    <span class="text-uppercase text-danger"><%= attendance.concerned_event.date %></span>
+                    <span class="text-uppercase text-danger"><%= event.date %></span>
                   </div>
                   <div class="event-title">
                     <h3 class="font-weight-bold">
-                      <%= link_to attendance.concerned_event.title, event_path(attendance.concerned_event) %>
+                      <%= link_to event.title, event_path(event) %>
                     </h3>
                   </div>
                 </div>
               </div>
-              <% end %>
             <% end %>
 
           </div>
           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <% @attendances.each do |attendance| %>
-              <% if attendance.concerned_event.date > Date.today %>
+            <% @upcoming.each do |event| %>
               <div class="row mt-4 event p-4">
                 <div class="col-md-4">
                   <img class="img-fluid" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F116837057%2F321310090885%2F1%2Foriginal.20201105-075340?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=50a847fbce8bbdfabb88e2e9c1b7c3fa" alt="">
                 </div>
                 <div class="col-md-8">
                   <div class="date">
-                    <span class="text-uppercase text-danger"><%= attendance.concerned_event.date %></span>
+                    <span class="text-uppercase text-danger"><%= event.date %></span>
                   </div>
                   <div class="event-title">
                     <h3 class="font-weight-bold">
-                      <%= link_to attendance.concerned_event.title, event_path(attendance.concerned_event), class: "text-dark" %>
+                      <%= link_to event.title, event_path(event), class: "text-dark" %>
                     </h3>
                   </div>
                 </div>
               </div>
-              <% end %>
             <% end %>
 
           </div>
