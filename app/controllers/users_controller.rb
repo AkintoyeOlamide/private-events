@@ -22,12 +22,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @past = Event.past.select {
-      |e| e.attendances.where('status = ?', true).where('invited_user_id = ?', @user.id)
-    }
-    @upcoming = Event.upcoming.select {
-      |e| e.attendances.where('status = ?', true).where('invited_user_id = ?', @user.id)
-    }
+    @past = Event.past.select do |e|
+      e.attendances.where('status = ?', true).where('invited_user_id = ?', @user.id)
+    end
+    @upcoming = Event.upcoming.select do |e|
+      e.attendances.where('status = ?', true).where('invited_user_id = ?', @user.id)
+    end
   end
 
   def attend_events
