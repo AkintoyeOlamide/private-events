@@ -1,0 +1,83 @@
+<main class="bg-white">
+  <div class="container pb-5 bg-light rounded event-heading">
+    <div class="row">
+
+      <!--main content-->
+      <div class="col-md-12 main-content pt-5">
+        <div class="row">
+          <div class="col-4">
+            <img class="img-fluid" src="https://process.filestackapi.com/AtM7HNKzQZ6u2HxwJF1Jiz/compress/quality=value:90/0tTy4z3lTbCkw18ehjQ8" alt="">
+          </div>
+          <div class="col-md-8">
+            <div class="date">
+              <span class="text-uppercase text-danger"><%= @event.date %></span>
+            </div>
+            <div class="event-title">
+              <h3 class="font-weight-bold"><%= @event.title %></h3>
+            </div>
+            <div class="event-author mt-3">
+              <p>by
+                <a class="blue-oschool" href="#"><%= @event.creator.username %></a>
+              </p>
+            </div>
+            <div class="mt-3">
+              <% if current_user && current_user.created_events.exists?(@event.id) %>
+              <%= link_to "Invite people", inviteUsers_path(@event), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
+              <% elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) %>
+              <%= link_to "Withdraw", withdraw_path(user_id: current_user.id, event_id: @event.id), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
+              <% elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) != true %>
+              <%= link_to "You have been invited. Attend the event", attend_path(user_id: current_user.id, event_id: @event.id), class: "w-25 p-2 text-center bg-white rounded nav-link blue-oschool" %>
+              <% else %>
+              <p>You must be invited to attend this event</p>
+              <% end %>
+           </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!--end main content-->
+
+      <div id="overlay"></div>
+    </div>
+  </div>
+  <div class="container mb-5 bg-white mt-4 pr-5 pl-5">
+    <div class="row">
+      <div class="col-8">
+        <h6 class="font-weight-bold">About this Event</h6>
+
+        <p class="mt-5">
+          <%= @event.description %>
+        </p>
+      </div>
+      <div class="col-4">
+        <% if current_user && current_user.created_events.exists?(@event.id) %>
+        <%= link_to "Invite people", inviteUsers_path(@event), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
+        <% elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) %>
+        <%= link_to "Withdraw", withdraw_path(user_id: current_user.id, event_id: @event.id), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
+        <% elsif current_user && invited?(current_user, @event.id) && attended?(current_user, @event.id) != true %>
+        <%= link_to "You have been invited. Attend the event", attend_path(user_id: current_user.id, event_id: @event.id), class: "p-2 text-center bg-white rounded nav-link blue-oschool" %>
+        <% else %>
+        <p>You must be invited to attend this event</p>
+        <% end %>
+      </div>
+    </div>
+    <% if current_user %>
+    <div class="row">
+      <div class="col-8">
+        <h6 class="font-weight-bold">List of attendees</h6>
+
+        <p class="mt-5">
+          <ul>
+            <% @attendances.each do |attendance| %>
+            <li> <%= link_to attendance.invited_user.username, user_path(attendance.invited_user) %> </li>
+            <% end %>
+          </ul>
+        </p>
+      </div>
+
+    </div>
+    <% end %>
+  </div>
+</main>

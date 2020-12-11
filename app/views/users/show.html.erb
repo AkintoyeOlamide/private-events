@@ -1,0 +1,72 @@
+<main class="bg-white">
+  <div class="container pb-5 bg-light">
+    <div class="row">
+
+      <!--main content-->
+      <div class="col-md-12 main-content pt-5 text-center">
+          <img class="img-fluid mt-5" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F99222656%2F321310090885%2F2%2Foriginal.jpg?w=225&auto=format%2Ccompress&q=75&sharp=10&s=7138bb23a63c88ffb8a3837f4b7a58ed" alt="">
+      </div>
+      <div class="col-12 text-center mt-5">
+        <h2 class="font-weight-bold"><%= @user.username %></h2>
+      </div>
+
+
+      <!--end main content-->
+
+      <div id="overlay"></div>
+    </div>
+  </div>
+  <div class="container mb-5">
+    <div class="col-12">
+      <nav>
+        <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Past Events</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Upcoming events</a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <% @past.each do |event| %>
+              <div class="row mt-4 event p-4">
+                <div class="col-md-4">
+                  <img class="img-fluid" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F116837057%2F321310090885%2F1%2Foriginal.20201105-075340?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=50a847fbce8bbdfabb88e2e9c1b7c3fa" alt="">
+                </div>
+                <div class="col-md-8">
+                  <div class="date">
+                    <span class="text-uppercase text-danger"><%= event.date %></span>
+                  </div>
+                  <div class="event-title">
+                    <h3 class="font-weight-bold">
+                      <%= link_to event.title, event_path(event) %>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+            <% @upcoming.each do |event| %>
+              <div class="row mt-4 event p-4">
+                <div class="col-md-4">
+                  <img class="img-fluid" src="https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F116837057%2F321310090885%2F1%2Foriginal.20201105-075340?h=230&w=460&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=50a847fbce8bbdfabb88e2e9c1b7c3fa" alt="">
+                </div>
+                <div class="col-md-8">
+                  <div class="date">
+                    <span class="text-uppercase text-danger"><%= event.date %></span>
+                  </div>
+                  <div class="event-title">
+                    <h3 class="font-weight-bold">
+                      <%= link_to event.title, event_path(event), class: "text-dark" %>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+</main>
